@@ -241,16 +241,6 @@ Base URL: `http://localhost:5000/api`
 
 ---
 
-## Screenshots
-
-> Add screenshots of the running application here.
-
-| Dashboard | Products Page |
-|-----------|---------------|
-| ![Dashboard](screenshots/dashboard.png) | ![Products](screenshots/products.png) |
-
----
-
 ## Available Scripts
 
 **Backend**
