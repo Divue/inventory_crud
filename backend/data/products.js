@@ -1,0 +1,58 @@
+const products = [
+  {
+    name: "Wireless Mouse",
+    sku: "WM-1001",
+    category: "Electronics",
+    quantity: 120,
+    price: 29.99,
+    supplier: "Logitech India",
+    description: "Ergonomic wireless mouse with USB receiver.",
+  },
+  {
+    name: "Mechanical Keyboard",
+    sku: "MK-2001",
+    category: "Electronics",
+    quantity: 3,
+    price: 89.99,
+    supplier: "Keychron Technologies",
+    description: "Hot-swappable keyboard with brown switches.",
+  },
+  {
+    name: "USB-C Hub 7-in-1",
+    sku: "UH-3001",
+    category: "Accessories",
+    quantity: 75,
+    price: 45.5,
+    supplier: "Anker Direct",
+    description: "Multi-port hub with HDMI and SD card reader.",
+  },
+  {
+    name: "Monitor Stand Riser",
+    sku: "MS-4001",
+    category: "Office",
+    quantity: 4,
+    price: 34.99,
+    supplier: "ErgoDesk Solutions",
+    description: "Adjustable stand with storage drawer.",
+  },
+  {
+    name: "A4 Notebook Pack",
+    sku: "NB-5001",
+    category: "Stationery",
+    quantity: 200,
+    price: 12.99,
+    supplier: "Classmate Supplies",
+    description: "Pack of 5 ruled notebooks, 200 pages each.",
+  },
+  {
+    name: "External SSD 1TB",
+    sku: "ES-6001",
+    category: "Electronics",
+    quantity: 40,
+    price: 89.0,
+    supplier: "Samsung Storage",
+    description: "Portable SSD with USB 3.2, up to 1050MB/s.",
+  },
+];
+
+export default products;
