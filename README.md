@@ -1,72 +1,73 @@
 # Inventory Management System
 
-A full-stack inventory management application built with **React**, **Vite**, **TailwindCSS**, **Node.js**, **Express**, and **MongoDB**. Provides complete CRUD operations for managing products in your inventory.
+A full-stack web application for managing product inventory with complete CRUD operations. Built with React, Node.js, Express, and MongoDB.
 
 ---
 
-## ✨ Features
+## Table of Contents
 
-- **Product CRUD** — Create, Read, Update, Delete products
-- **Dashboard** — Overview with total products, inventory value, low stock alerts
-- **Search & Filter** — Search by name/SKU/supplier, filter by category
-- **Form Validation** — Required fields, non-negative values, unique SKU
-- **Low Stock Alerts** — Visual highlighting for items with quantity ≤ 5
-- **Toast Notifications** — Success/error feedback on every action
-- **Responsive UI** — Clean, modern interface with sidebar navigation
-- **Seed Data** — Pre-populated database with 15 realistic products
-
----
-
-## 🛠️ Tech Stack
-
-| Layer    | Technology                                     |
-| -------- | ---------------------------------------------- |
-| Frontend | React 18, Vite 6, TailwindCSS 3, Axios, React Router DOM |
-| Backend  | Node.js, Express 4, Mongoose 8, MongoDB        |
-| Tools    | dotenv, cors, morgan                           |
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Environment Variables](#environment-variables)
+- [Database Seeding](#database-seeding)
+- [Running the Application](#running-the-application)
+- [API Documentation](#api-documentation)
+- [Features](#features)
+- [Screenshots](#screenshots)
 
 ---
 
-## 📁 Folder Structure
+## Tech Stack
+
+**Frontend:** React 18, Vite, TailwindCSS, Axios, React Router DOM  
+**Backend:** Node.js, Express.js, Mongoose, MongoDB  
+**Utilities:** dotenv, cors, morgan
+
+---
+
+## Project Structure
 
 ```
+inventory-management/
 ├── backend/
 │   ├── config/
-│   │   └── db.js
+│   │   └── db.js                  # MongoDB connection
 │   ├── controllers/
-│   │   └── productController.js
+│   │   └── productController.js   # Request handlers
 │   ├── data/
-│   │   └── products.js
+│   │   └── products.js            # Seed data
 │   ├── middleware/
-│   │   ├── errorMiddleware.js
-│   │   └── notFoundMiddleware.js
+│   │   ├── errorMiddleware.js     # Centralized error handler
+│   │   └── notFoundMiddleware.js  # 404 handler
 │   ├── models/
-│   │   └── Product.js
+│   │   └── Product.js             # Mongoose schema
 │   ├── routes/
-│   │   └── productRoutes.js
+│   │   └── productRoutes.js       # API route definitions
 │   ├── seed/
-│   │   └── seedProducts.js
-│   ├── .env
+│   │   └── seedProducts.js        # Database seed script
+│   ├── .env                       # Environment variables
 │   ├── package.json
-│   └── server.js
+│   └── server.js                  # Application entry point
 │
 ├── frontend/
 │   ├── src/
 │   │   ├── api/
-│   │   │   └── axios.js
+│   │   │   └── axios.js           # Axios instance
 │   │   ├── components/
-│   │   │   ├── DashboardCards.jsx
-│   │   │   ├── Loader.jsx
-│   │   │   ├── ProductForm.jsx
-│   │   │   ├── ProductTable.jsx
-│   │   │   └── Sidebar.jsx
+│   │   │   ├── DashboardCards.jsx  # Statistics cards
+│   │   │   ├── Loader.jsx         # Loading spinner
+│   │   │   ├── ProductForm.jsx    # Create/Edit form modal
+│   │   │   ├── ProductTable.jsx   # Product data table
+│   │   │   └── Sidebar.jsx        # Navigation sidebar
 │   │   ├── pages/
-│   │   │   ├── Dashboard.jsx
-│   │   │   └── Products.jsx
-│   │   ├── App.jsx
-│   │   ├── index.css
-│   │   └── main.jsx
-│   ├── .env
+│   │   │   ├── Dashboard.jsx      # Dashboard page
+│   │   │   └── Products.jsx       # Products management page
+│   │   ├── App.jsx                # Root component
+│   │   ├── index.css              # Global styles
+│   │   └── main.jsx               # React entry point
+│   ├── .env                       # Frontend environment variables
 │   ├── index.html
 │   ├── package.json
 │   ├── postcss.config.js
@@ -78,130 +79,191 @@ A full-stack inventory management application built with **React**, **Vite**, **
 
 ---
 
-## 🚀 Getting Started
+## Prerequisites
 
-### Prerequisites
+- Node.js v18 or higher
+- MongoDB (local instance or Atlas)
+- npm
 
-- **Node.js** v18+
-- **MongoDB** running locally or a MongoDB Atlas connection string
+---
 
-### 1. Clone the repository
+## Installation
+
+**1. Clone the repository**
 
 ```bash
-git clone <repository-url>
-cd xebia-assignment
+git clone https://github.com/Divue/inventory_crud.git
+cd inventory_crud
 ```
 
-### 2. Backend Setup
+**2. Install backend dependencies**
 
 ```bash
 cd backend
 npm install
 ```
 
-Create or update `backend/.env`:
+**3. Install frontend dependencies**
 
-```env
-PORT=5000
-MONGO_URI=mongodb://localhost:27017/inventory_management
+```bash
+cd frontend
+npm install
 ```
 
-### 3. Seed the Database
+---
+
+## Environment Variables
+
+**Backend** — `backend/.env`
+
+```
+PORT=5000
+MONGO_URI=mongodb://localhost:27017/inventory_DB
+```
+
+**Frontend** — `frontend/.env`
+
+```
+VITE_API_BASE_URL=http://localhost:5000/api
+```
+
+---
+
+## Database Seeding
+
+The seed script clears existing products and inserts sample data.
 
 ```bash
 cd backend
 npm run seed
 ```
 
-### 4. Start the Backend
+Output:
+
+```
+✅ MongoDB Connected: localhost
+🗑️  Cleared 0 existing products
+✅ Successfully seeded 6 products
+🎉 Database seeding completed!
+```
+
+---
+
+## Running the Application
+
+Start the backend and frontend in separate terminals.
+
+**Terminal 1 — Backend (port 5000)**
 
 ```bash
 cd backend
 npm run dev
 ```
 
-Backend runs at: `http://localhost:5000`
-
-### 5. Frontend Setup
-
-```bash
-cd frontend
-npm install
-```
-
-Create or update `frontend/.env`:
-
-```env
-VITE_API_BASE_URL=http://localhost:5000/api
-```
-
-### 6. Start the Frontend
+**Terminal 2 — Frontend (port 5173)**
 
 ```bash
 cd frontend
 npm run dev
 ```
 
-Frontend runs at: `http://localhost:5173`
+Open `http://localhost:5173` in the browser.
 
 ---
 
-## 📡 API Endpoints
+## API Documentation
 
-| Method | Endpoint             | Description          |
-| ------ | -------------------- | -------------------- |
-| GET    | `/api/products`      | Get all products     |
-| GET    | `/api/products/:id`  | Get single product   |
-| POST   | `/api/products`      | Create a product     |
-| PUT    | `/api/products/:id`  | Update a product     |
-| DELETE | `/api/products/:id`  | Delete a product     |
+Base URL: `http://localhost:5000/api`
+
+| Method | Endpoint           | Description         |
+|--------|--------------------|---------------------|
+| GET    | `/products`        | Get all products    |
+| GET    | `/products/:id`    | Get product by ID   |
+| POST   | `/products`        | Create new product  |
+| PUT    | `/products/:id`    | Update product      |
+| DELETE | `/products/:id`    | Delete product      |
+
+### Request Body (POST / PUT)
+
+```json
+{
+  "name": "Wireless Mouse",
+  "sku": "WM-1001",
+  "category": "Electronics",
+  "quantity": 120,
+  "price": 29.99,
+  "supplier": "Logitech India",
+  "description": "Ergonomic wireless mouse with USB receiver."
+}
+```
+
+### Response Format
+
+```json
+{
+  "success": true,
+  "data": { ... }
+}
+```
+
+### Validation Rules
+
+| Field       | Rule                        |
+|-------------|-----------------------------|
+| name        | Required, max 100 chars     |
+| sku         | Required, unique, uppercase |
+| category    | Required, max 50 chars      |
+| quantity    | Required, min 0             |
+| price       | Required, min 0             |
+| supplier    | Required, max 100 chars     |
+| description | Optional, max 500 chars     |
+
+### Error Response
+
+```json
+{
+  "success": false,
+  "message": "Product not found"
+}
+```
 
 ---
 
-## 📦 Scripts
+## Features
 
-### Backend
-
-| Script          | Command          | Description                |
-| --------------- | ---------------- | -------------------------- |
-| `npm run dev`   | `node --watch`   | Start dev server (watch)   |
-| `npm start`     | `node server.js` | Start production server    |
-| `npm run seed`  | `node seed/...`  | Seed database with data    |
-
-### Frontend
-
-| Script          | Command        | Description            |
-| --------------- | -------------- | ---------------------- |
-| `npm run dev`   | `vite`         | Start dev server       |
-| `npm run build` | `vite build`   | Build for production   |
+- **Dashboard** — Total products, inventory value, low stock count, category count
+- **Product Table** — View all products with search and category filter
+- **CRUD Operations** — Add, edit, and delete products via modal form
+- **Low Stock Alerts** — Visual highlighting for products with quantity ≤ 5
+- **Form Validation** — Client and server-side validation on all fields
+- **Toast Notifications** — Success and error feedback on every action
+- **Responsive Layout** — Sidebar navigation with clean, minimal UI
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
-> _Add screenshots of the running application here._
+> Add screenshots of the running application here.
 
 | Dashboard | Products Page |
-| --------- | ------------- |
+|-----------|---------------|
 | ![Dashboard](screenshots/dashboard.png) | ![Products](screenshots/products.png) |
 
 ---
 
-## 🔮 Future Improvements
+## Available Scripts
 
-- Authentication & authorization (JWT)
-- Role-based access control
-- Product image upload
-- Pagination & sorting
-- Export to CSV/PDF
-- Audit logs
-- Multi-warehouse support
-- Barcode/QR code scanning
-- Real-time notifications (WebSocket)
-- Unit & integration tests
+**Backend**
 
----
+| Script         | Command                     |
+|----------------|-----------------------------|
+| `npm run dev`  | Start server with file watch |
+| `npm start`    | Start server (production)    |
+| `npm run seed` | Seed the database            |
 
-## 📄 License
+**Frontend**
 
-This project is for educational and assignment purposes.
+| Script          | Command              |
+|-----------------|----------------------|
+| `npm run dev`   | Start Vite dev server |
+| `npm run build` | Build for production  |
